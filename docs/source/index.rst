@@ -5,7 +5,7 @@ pwntools
 使用 Python 编写
 它的主要被设计用于快速原型设计以及开发, 致力于让使用者编写尽可能简介的漏洞利用程序
 
-该文档的主要地址位于: docs.pwntools.com_, 并使用 readthedoc_ 进行维护, 该文档存在三个分支
+该文档的主要地址位于: docs.pwntools.com_, 并使用 readthedocs_ 进行维护, 该文档存在三个分支
 
 - Stable_
 - Beta_
@@ -25,11 +25,11 @@ pwntools
    :maxdepth: 3
    :glob:
 
-   关于
-   安装
+   about
+   install
    intro
    globals
-   命令行工具
+   commandline
 
 
 模块索引
