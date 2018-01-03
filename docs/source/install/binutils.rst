@@ -1,20 +1,20 @@
 Binutils
 -------------
 
-Assembly of foreign architectures (e.g. assembling Sparc shellcode on
-Mac OS X) requires cross-compiled versions of ``binutils`` to be
-installed. We've made this process as smooth as we can.
+为了支持一些不常见的架构的汇编指令(例如: 在 Mac OS X 操作系统上汇编 Sparc 的 Shellcode)
+需要首先安装交叉编译的 ``binutils``
+我们已经尽我们最大的努力使这个更加丝滑
 
-In these examples, replace ``$ARCH`` with your target architecture (e.g., arm, mips64, vax, etc.).
+在下面的例子中, 请替换 ``$ARCH`` 为你所需要的目标架构 (例如： arm, mips64, vax, 等等)
 
-Building `binutils` from source takes about 60 seconds on a modern 8-core machine.
+如果你有一个八核的现代 CPU , 那么从源码构建 `binutils` 大约需要 60 秒钟
 
 Ubuntu
 ^^^^^^^^^^^^^^^^
 
-For Ubuntu 12.04 through 15.10, you must first add the pwntools `Personal Package Archive repository <http://binutils.pwntools.com>`__.
+如果你的操作系统是 Ubuntu 12.04 到 15.10 之间, 那么你需要首先添加 pwntools 的软件源 `Personal Package Archive repository <http://binutils.pwntools.com>`__.
 
-Ubuntu Xenial (16.04) has official packages for most architectures, and does not require this step.
+Ubuntu Xenial (16.04) 有许多官方的软件包来支持大多数架构, 因此不需要再额外做什么
 
 .. code-block:: bash
 
@@ -22,7 +22,7 @@ Ubuntu Xenial (16.04) has official packages for most architectures, and does not
     $ apt-add-repository ppa:pwntools/binutils
     $ apt-get update
 
-Then, install the binutils for your architecture.
+然后, 为你的目标架构安装 binutils
 
 .. code-block:: bash
 
@@ -31,10 +31,11 @@ Then, install the binutils for your architecture.
 Mac OS X
 ^^^^^^^^^^^^^^^^
 
-Mac OS X is just as easy, but requires building binutils from source.
-However, we've made ``homebrew`` recipes to make this a single command.
+Mac OS X 安装比较容易, 但是也需要从源码编译 binutils
+但是, 我们已经做好了 ``homebrew`` 的软件包以便于可以通过一条命令完成构建
 After installing `brew <http://brew.sh>`__, grab the appropriate
-recipe from our `binutils
+在安装完成 `brew <http://brew.sh>`__ 之后, 就可以开始正式安装 binutils 了
+ `binutils
 repo <https://github.com/Gallopsled/pwntools-binutils/>`__.
 
 .. code-block:: bash
@@ -44,8 +45,7 @@ repo <https://github.com/Gallopsled/pwntools-binutils/>`__.
 Alternate OSes
 ^^^^^^^^^^^^^^^^
 
-If you want to build everything by hand, or don't use any of the above
-OSes, ``binutils`` is simple to build by hand.
+如果你想一步一步手动从源码编译所有的工作, 手动构建 ``binutils`` 也很简单
 
 .. code-block:: bash
 
