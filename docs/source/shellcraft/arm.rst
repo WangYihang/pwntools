@@ -3,7 +3,7 @@
    from pwn import *
    context.clear(arch='arm')
 
-:mod:`pwnlib.shellcraft.arm` --- Shellcode for ARM
+:mod:`pwnlib.shellcraft.arm` --- 为 ARM 架构设计的 shellcode
 ===========================================================
 
 :mod:`pwnlib.shellcraft.arm`

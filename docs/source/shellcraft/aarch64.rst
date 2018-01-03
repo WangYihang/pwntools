@@ -3,7 +3,7 @@
    from pwn import *
    context.clear(arch='aarch64')
 
-:mod:`pwnlib.shellcraft.aarch64` --- Shellcode for AArch64
+:mod:`pwnlib.shellcraft.aarch64` --- 为 AArch64 架构设计的 shellcode
 ===========================================================
 
 :mod:`pwnlib.shellcraft.aarch64`

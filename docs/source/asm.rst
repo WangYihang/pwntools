@@ -8,7 +8,7 @@
    from pwnlib.tubes.process import process
 
 
-:mod:`pwnlib.asm` --- Assembler functions
+:mod:`pwnlib.asm` --- 汇编函数
 =========================================
 
 .. automodule:: pwnlib.asm

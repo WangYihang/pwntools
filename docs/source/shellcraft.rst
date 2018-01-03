@@ -2,7 +2,7 @@
 
    from pwnlib import shellcraft
 
-:mod:`pwnlib.shellcraft` --- Shellcode generation
+:mod:`pwnlib.shellcraft` --- shellcode 生成器
 =================================================
 
 .. automodule:: pwnlib.shellcraft

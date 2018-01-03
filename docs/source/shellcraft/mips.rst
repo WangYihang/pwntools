@@ -3,7 +3,7 @@
    from pwn import *
    context.clear(arch='mips')
 
-:mod:`pwnlib.shellcraft.mips` --- Shellcode for MIPS
+:mod:`pwnlib.shellcraft.mips` --- 为 MIPS 架构设计的 shellcode
 ===========================================================
 
 :mod:`pwnlib.shellcraft.mips`

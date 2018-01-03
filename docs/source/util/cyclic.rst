@@ -4,7 +4,7 @@
    from pwnlib.util.cyclic import *
 
 
-:mod:`pwnlib.util.cyclic` --- Generation of unique sequences
+:mod:`pwnlib.util.cyclic` --- 生成单一序列
 ============================================================
 
 .. automodule:: pwnlib.util.cyclic

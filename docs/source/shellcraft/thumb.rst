@@ -3,7 +3,7 @@
    from pwn import *
    context.clear(arch='thumb')
 
-:mod:`pwnlib.shellcraft.thumb` --- Shellcode for Thumb Mode
+:mod:`pwnlib.shellcraft.thumb` --- 为 THUMB 指令集设计的 shellcode
 ===========================================================
 
 :mod:`pwnlib.shellcraft.thumb`

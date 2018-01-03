@@ -4,7 +4,7 @@
    from pwnlib.util.iters import *
 
 
-:mod:`pwnlib.util.iters` --- Extension of standard module :mod:`itertools`
+:mod:`pwnlib.util.iters` ---  :mod:`itertools` 标准库的扩展
 ==========================================================================
 
 .. automodule:: pwnlib.util.iters

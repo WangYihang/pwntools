@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.elf.corefile` --- Core Files
+:mod:`pwnlib.elf.corefile` --- 核心文件
 ===========================================================
 
 .. automodule:: pwnlib.elf.corefile

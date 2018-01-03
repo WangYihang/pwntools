@@ -2,7 +2,7 @@
 
    from pwnlib.useragents import *
 
-:mod:`pwnlib.useragents` --- A database of useragent strings
+:mod:`pwnlib.useragents` --- 一个用户代理字符串的数据库
 ============================================================
 
 .. automodule:: pwnlib.useragents

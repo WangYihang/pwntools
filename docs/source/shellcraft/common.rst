@@ -1,4 +1,4 @@
-:mod:`pwnlib.shellcraft.common` --- Shellcode common to all architecture
+:mod:`pwnlib.shellcraft.common` --- 通用的 shellcode
 ========================================================================
 
 .. automodule:: pwnlib.shellcraft.common

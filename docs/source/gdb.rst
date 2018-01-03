@@ -2,7 +2,7 @@
 
     from pwn import *
 
-:mod:`pwnlib.gdb` --- Working with GDB
+:mod:`pwnlib.gdb` --- 配合 GDB 一起工作
 ======================================
 
 .. automodule:: pwnlib.gdb

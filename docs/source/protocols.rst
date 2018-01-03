@@ -1,4 +1,4 @@
-:mod:`pwnlib.protocols` --- Wire Protocols
+:mod:`pwnlib.protocols` --- Wire 协议
 =============================================
 
 .. automodule:: pwnlib.protocols

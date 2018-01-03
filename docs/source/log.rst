@@ -1,4 +1,4 @@
-:mod:`pwnlib.log` --- Logging stuff
+:mod:`pwnlib.log` --- 日志工具类
 ===================================
 
 .. automodule:: pwnlib.log

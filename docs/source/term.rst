@@ -1,4 +1,4 @@
-:mod:`pwnlib.term` --- Terminal handling
+:mod:`pwnlib.term` --- 终端控制
 ========================================
 
 .. automodule:: pwnlib.term

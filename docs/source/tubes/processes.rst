@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.tubes.process` --- Processes
+:mod:`pwnlib.tubes.process` --- 进程
 ===========================================================
 
 .. automodule:: pwnlib.tubes.process

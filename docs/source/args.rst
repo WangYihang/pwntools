@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.args` --- Magic Command-Line Arguments
+:mod:`pwnlib.args` --- 魔术命令行参数
 =====================================================
 
 .. automodule:: pwnlib.args

@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.runner` --- Running Shellcode
+:mod:`pwnlib.runner` --- 执行 shellcode
 ===========================================
 
 .. automodule:: pwnlib.runner

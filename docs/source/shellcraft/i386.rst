@@ -3,7 +3,7 @@
    from pwn import *
    context.clear(arch='i386')
 
-:mod:`pwnlib.shellcraft.i386` --- Shellcode for Intel 80386
+:mod:`pwnlib.shellcraft.i386` --- 为 Intel 80386 架构设计的 shellcode
 ===========================================================
 
 :mod:`pwnlib.shellcraft.i386`

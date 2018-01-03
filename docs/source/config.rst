@@ -1,4 +1,4 @@
-:mod:`pwnlib.config` --- Pwntools Configuration File
+:mod:`pwnlib.config` --- Pwntools 的配置文件
 ====================================================
 
 .. automodule:: pwnlib.config

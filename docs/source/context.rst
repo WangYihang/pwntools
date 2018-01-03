@@ -5,7 +5,7 @@
    log = pwnlib.log.getLogger('pwnlib.context')
    context.clear()
 
-:mod:`pwnlib.context` --- Setting runtime variables
+:mod:`pwnlib.context` --- 设置运行时参数
 =====================================================
 
 Many settings in ``pwntools`` are controlled via the global variable :data:`.context`, such as the selected target operating system, architecture, and bit-width.

@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.encoders` --- Encoding Shellcode
+:mod:`pwnlib.encoders` --- 编码 shellcode
 ===============================================
 
 .. automodule:: pwnlib.encoders

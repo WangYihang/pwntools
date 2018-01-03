@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.tubes` --- Talking to the World!
+:mod:`pwnlib.tubes` --- 和这个世界谈谈!
 =============================================
 
 .. automodule:: pwnlib.tubes

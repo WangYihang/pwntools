@@ -1,4 +1,4 @@
-:mod:`pwnlib.replacements` --- Replacements for various functions
+:mod:`pwnlib.replacements` --- 替换变量及函数
 =================================================================
 
 .. automodule:: pwnlib.replacements

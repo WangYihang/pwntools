@@ -2,7 +2,7 @@
 
    from pwn import *
 
-:mod:`pwnlib.tubes.serialtube` --- Serial Ports
+:mod:`pwnlib.tubes.serialtube` --- 串口
 ===========================================================
 
 .. automodule:: pwnlib.tubes.serialtube

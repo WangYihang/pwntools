@@ -3,7 +3,7 @@
    from pwn import *
    from pwnlib.tubes.server import server
 
-:mod:`pwnlib.tubes.sock` --- Sockets
+:mod:`pwnlib.tubes.sock` --- 套接字
 ===========================================================
 
 

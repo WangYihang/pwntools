@@ -3,7 +3,7 @@
    from pwn import *
    from glob import glob
 
-:mod:`pwnlib.elf.elf` --- ELF Files
+:mod:`pwnlib.elf.elf` --- ELF 文件
 ===========================================================
 
 .. automodule:: pwnlib.elf.elf

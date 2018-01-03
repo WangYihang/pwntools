@@ -1,4 +1,4 @@
-:mod:`pwnlib.atexit` --- Replacement for atexit
+:mod:`pwnlib.atexit` --- atexit 的替换函数
 ===============================================
 
 .. automodule:: pwnlib.atexit

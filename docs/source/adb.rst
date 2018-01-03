@@ -3,7 +3,7 @@
    from pwn import *
    adb = pwnlib.adb
 
-:mod:`pwnlib.adb` --- Android Debug Bridge
+:mod:`pwnlib.adb` --- 安卓调试桥
 =====================================================
 
 .. automodule:: pwnlib.adb.adb

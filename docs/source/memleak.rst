@@ -2,7 +2,7 @@
 
     from pwn import *
 
-:mod:`pwnlib.memleak` --- Helper class for leaking memory
+:mod:`pwnlib.memleak` --- 泄漏内存的帮助类
 =========================================================
 
 .. automodule:: pwnlib.memleak
