@@ -5,8 +5,15 @@ pwntools
 Written in Python, it is designed for rapid prototyping and development,
 and intended to make exploit writing as simple as possible.
 
+``pwntools`` 是一个 CTF (Capture The Flag) 框架, 并且是一个漏洞利用开发库
+使用 Python 编写
+它的主要被设计用于快速原型设计以及开发, 致力于让使用者编写尽可能简介的漏洞利用程序
+
+
 The primary location for this documentation is at docs.pwntools.com_, which uses
 readthedocs_. It comes in three primary flavors:
+
+该文档的主要地址位于: docs.pwntools.com_, 并使用 readthedoc_ 进行维护, 该文档存在三个分支
 
 - Stable_
 - Beta_
@@ -19,24 +26,24 @@ readthedocs_. It comes in three primary flavors:
 .. _Dev: https://docs.pwntools.com/en/dev
 
 
-Getting Started
+快速开始
 ---------------
 
 .. toctree::
    :maxdepth: 3
    :glob:
 
-   about
-   install
+   关于
+   安装
    intro
    globals
-   commandline
+   命令行工具
 
 
-Module Index
+模块索引
 ------------
 
-Each of the ``pwntools`` modules is documented here.
+每一个 ``pwntools`` 的模块如下所示.
 
 .. toctree::
    :maxdepth: 1
@@ -84,7 +91,7 @@ Each of the ``pwntools`` modules is documented here.
 
 .. only:: not dash
 
-   Indices and tables
+   目录和表格
    ==================
 
    * :ref:`genindex`
