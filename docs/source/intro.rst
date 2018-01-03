@@ -2,26 +2,25 @@
 
    from pwn import *
 
-Getting Started
+快速开始
 ========================
 
-To get your feet wet with pwntools, let's first go through a few examples.
-
-When writing exploits, pwntools generally follows the "kitchen sink" approach.
+为了让你先快速了解 pwntools, 让我们首先来看一个小例子
+为了编写 Exploits, pwntools 提供了一个优雅的小 Demo
 
     >>> from pwn import *
 
-This imports a lot of functionality into the global namespace.  You can now
-assemble, disassemble, pack, unpack, and many other things with a single function.
+这句话将一系列的函数引入全局命名空间
+现在你可以做例如: 汇编, 反汇编, 封包, 解包等一系列的操作只通过调用一个单独的函数
 
-A full list of everything that is imported is available on :doc:`globals`.
+你可以参考 :doc:`globals` 来获取所有被导入的模块/常量列表
 
-
-Making Connections
+建立链接
 ------------------
 
-You need to talk to the challenge binary in order to pwn it, right?
-pwntools makes this stupid simple with its :mod:`pwnlib.tubes` module.
+你需要的是和 CTF 的 pwn 题中的二进制程序进行交互, 以便与将它 pwn 掉, 对吧?
+
+pwntools 的 :mod:`pwnlib.tubes` 模块让这件事变得异常简单
 
 This exposes a standard interface to talk to processes, sockets, serial ports,
 and all manner of things, along with some nifty helpers for common tasks.

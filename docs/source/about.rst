@@ -19,7 +19,7 @@ To make this possible, we decided to have two different modules. :mod:`pwnlib`
 would be our nice, clean Python module, while :mod:`pwn` would be used during
 CTFs.
 
-:mod:`pwn` --- Toolbox optimized for CTFs
+:mod:`pwn` --- 为了 CTF 优化过的工具包
 -----------------------------------------
 
 .. module:: pwn
