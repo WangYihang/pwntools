@@ -1,25 +1,23 @@
-About pwntools
+关于 pwntools
 ========================
 
-Whether you're using it to write exploits, or as part
-of another software project will dictate how you use it.
+首先思考一件事, 你要使用它编写漏洞利用脚本还是将它作为另一个软件项目的一部分
+这将决定你使用 Pwntools 的方式
 
-Historically pwntools was used as a sort of exploit-writing DSL. Simply doing
-``from pwn import *`` in a previous version of pwntools would bring all sorts of
-nice side-effects.
+曾经, 我们仅仅通过 ``from pwn import *`` 这样的方式来使用 pwntools (旧版本), 但是将会带来一系列地附作用 (副作用)
 
-When redesigning pwntools for 2.0, we noticed two contrary goals:
+在我们重新设计 Pwntools 2.0 版本的时候, 我们确定了两个和以前不一样的目标
 
-* We would like to have a "normal" python module structure, to allow other
-  people to familiarize themselves with pwntools quickly.
-* We would like to have even more side-effects, especially by putting the
-  terminal in raw-mode.
+* 我们希望能够有一个 标准的 python 模块, 来允许其他人来快速地熟悉 pwntools
+* 我们想拥有更多的边缘作用(附加功能), 尤其是能将终端变成二进制模式
 
 To make this possible, we decided to have two different modules. :mod:`pwnlib`
-would be our nice, clean Python module, while :mod:`pwn` would be used during
-CTFs.
+为了使我们的目标成为显示, 我们决定实现两个不同的 python 模块 
+ :mod:`pwnlib` 将会是更加 Nice, 更加纯净的 Python 模块
+而 :mod:`pwn` 将更加侧重于 CTF 竞赛
 
-:mod:`pwn` --- 为了 CTF 优化过的工具包
+
+:mod:`pwn` --- CTF 二进制漏洞利用工具
 -----------------------------------------
 
 .. module:: pwn
@@ -38,7 +36,7 @@ the following:
 * Tries to parse some of the values in :data:`sys.argv` and every
   value it succeeds in parsing it removes.
 
-:mod:`pwnlib` --- Normal python library
+:mod:`pwnlib` --- 标准 Python 库
 ---------------------------------------
 
 .. module:: pwnlib
