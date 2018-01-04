@@ -22,9 +22,8 @@
 
 pwntools 的 :mod:`pwnlib.tubes` 模块让这件事变得异常简单
 
-This exposes a standard interface to talk to processes, sockets, serial ports,
-and all manner of things, along with some nifty helpers for common tasks.
-For example, remote connections via :mod:`pwnlib.tubes.remote`.
+这个模块对外暴露了一个标准的接口来与进程/套接字/串口/或者其他任何输入输出设备进行交流
+例如, 通过 :mod:`pwnlib.tubes.remote` 进行远程连接
 
     >>> conn = remote('ftp.ubuntu.org',21)
     >>> conn.recvline() # doctest: +ELLIPSIS
@@ -36,7 +35,7 @@ For example, remote connections via :mod:`pwnlib.tubes.remote`.
     'Please specify the password.\r\n'
     >>> conn.close()
 
-It's also easy to spin up a listener
+实现监听一个端口也很简单
 
     >>> l = listen()
     >>> r = remote('localhost', l.lport)
@@ -45,7 +44,7 @@ It's also easy to spin up a listener
     >>> c.recv()
     'hello'
 
-Interacting with processes is easy thanks to :mod:`pwnlib.tubes.process`.
+通过库 :mod:`pwnlib.tubes.process` , 我们可以很容易地和进程进行交互
 
 ::
 
@@ -57,17 +56,15 @@ Interacting with processes is easy thanks to :mod:`pwnlib.tubes.process`.
     'hello world\n'
     >>> sh.close()
 
-Not only can you interact with processes programmatically, but you can
-actually **interact** with processes.
+不仅可以通过编写代码和程序进行交互, 也可以通过直接通过终端和进程进行交互
 
     >>> sh.interactive() # doctest: +SKIP
     $ whoami
     user
 
-There's even an SSH module for when you've got to SSH into a box to perform
-a local/setuid exploit with :mod:`pwnlib.tubes.ssh`.  You can quickly spawn
-processes and grab the output, or spawn a process and interact with it like
-a ``process`` tube.
+当你拿到 SSH 的权限的时候, 你甚至可以通过 SSH 这个模块来执行你的 Exploit
+使用 :mod:`pwnlib.tubes.ssh`, 你可以快速地运行一个进程并且获取输出
+或者运行一个进程然后就像 ``process`` 一样和这个进程进行交互
 
 ::
 
@@ -83,7 +80,7 @@ a ``process`` tube.
     'hello world\n'
     >>> shell.close()
 
-Packing Integers
+打包和解包
 ------------------
 
 A common task for exploit-writing is converting between integers as Python
@@ -105,7 +102,7 @@ The packing/unpacking operations are defined for many common bit-widths.
     >>> u8('A') == 0x41
     True
 
-Setting the Target Architecture and OS
+设置目标架构和操作系统类型
 --------------------------------------
 
 The target architecture can generally be specified as an argument to the routine that requires it.
@@ -135,7 +132,7 @@ Additionally, you can use a shorthand to set all of the values at once.
 
     >>> context.clear()
 
-Setting Logging Verbosity
+设置日志等级
 -------------------------
 
 You can control the verbosity of the standard pwntools logging via ``context``.
@@ -151,7 +148,7 @@ Will cause all of the data sent and received by a ``tube`` to be printed to the 
 
     >>> context.clear()
 
-Assembly and Disassembly
+汇编和反汇编
 ------------------------
 
 Never again will you need to run some already-assembled pile of shellcode
@@ -179,7 +176,7 @@ file descriptor 4 to `stdin`, `stdout`, and `stderr`, and then pop a shell!
     '6a3158cd80...'
 
 
-Misc Tools
+其他工具
 ----------------------
 
 Never write another hexdump, thanks to :mod:`pwnlib.util.fiddling`.
@@ -193,7 +190,7 @@ Find offsets in your buffer that cause a crash, thanks to :mod:`pwnlib.cyclic`.
     >>> print cyclic_find('faab')
     120
 
-ELF Manipulation
+ELF 文件解析以及操作
 ----------------
 
 Stop hard-coding things!  Look them up at runtime with :mod:`pwnlib.elf`.
