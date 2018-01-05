@@ -83,12 +83,11 @@ pwntools 的 :mod:`pwnlib.tubes` 模块让这件事变得异常简单
 打包和解包
 ------------------
 
-A common task for exploit-writing is converting between integers as Python
-sees them, and their representation as a sequence of bytes.
-Usually folks resort to the built-in ``struct`` module.
 
-pwntools makes this easier with :mod:`pwnlib.util.packing`.  No more remembering
-unpacking codes, and littering your code with helper routines.
+编写漏洞利用的一个常见任务是进行整数转换
+就像在内存中一样, 将数字表示为一个字节序列。
+通常人们使用内置的 ``struct`` 模块。
+
 
     >>> import struct
     >>> p32(0xdeadbeef) == struct.pack('I', 0xdeadbeef)
@@ -97,7 +96,9 @@ unpacking codes, and littering your code with helper routines.
     >>> u32('abcd') == struct.unpack('I', 'abcd')[0]
     True
 
-The packing/unpacking operations are defined for many common bit-widths.
+pwntools 让打包和解包更加容易, 这归功于: :mod:`pwnlib.util.packing`
+不需要刻意去记忆这些代码, 可以直接使用助手程序来缩减你的代码
+打包和解包的操作可以适配各种 bit 宽度
 
     >>> u8('A') == 0x41
     True
@@ -105,21 +106,21 @@ The packing/unpacking operations are defined for many common bit-widths.
 设置目标架构和操作系统类型
 --------------------------------------
 
-The target architecture can generally be specified as an argument to the routine that requires it.
+通常可以将目标体系结构指定为函数定义的参数
 
     >>> asm('nop')
     '\x90'
     >>> asm('nop', arch='arm')
     '\x00\xf0 \xe3'
 
-However, it can also be set once in the global ``context``.  The operating system, word size, and endianness can also be set here.
+并且, 也可以通过设置全局变量 ``context`` 一次性进行设置, 同时也可以设置: 操作系统, 字长, 字节序
 
     >>> context.arch      = 'i386'
     >>> context.os        = 'linux'
     >>> context.endian    = 'little'
     >>> context.word_size = 32
 
-Additionally, you can use a shorthand to set all of the values at once.
+你也可以直接通过 context 这个函数来一次性设置所有需要设置的参数
 
     >>> asm('nop')
     '\x90'
