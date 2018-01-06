@@ -136,13 +136,13 @@ pwntools 让打包和解包更加容易, 这归功于: :mod:`pwnlib.util.packing
 设置日志等级
 -------------------------
 
-You can control the verbosity of the standard pwntools logging via ``context``.
-
-For example, setting
+你也可以通过控制 ``context`` 来设置 pwntools 的标准日志模块
+例如: 
+设置如下
 
     >>> context.log_level = 'debug'
 
-Will cause all of the data sent and received by a ``tube`` to be printed to the screen.
+将会在屏幕上打印所有发送和接受到的数据
 
 .. doctest::
    :hide:
@@ -152,13 +152,13 @@ Will cause all of the data sent and received by a ``tube`` to be printed to the 
 汇编和反汇编
 ------------------------
 
-Never again will you need to run some already-assembled pile of shellcode
-from the internet!  The :mod:`pwnlib.asm` module is full of awesome.
+从此以后你再也不需要从互联网上运行一些 shellcode 的汇编代码了
+模块: :mod:`pwnlib.asm` 极好的解决了这个问题
 
     >>> asm('mov eax, 0').encode('hex')
     'b800000000'
 
-But if you do, it's easy to suss out!
+可以看到, 直接汇编或者反汇编都是非常容易的
 
     >>> print disasm('6a0258cd80ebf9'.decode('hex'))
        0:   6a 02                   push   0x2
@@ -166,12 +166,14 @@ But if you do, it's easy to suss out!
        3:   cd 80                   int    0x80
        5:   eb f9                   jmp    0x0
 
-However, you shouldn't even need to write your own shellcode most of the
-time!  pwntools comes with the :mod:`pwnlib.shellcraft` module, which is
-loaded with useful time-saving shellcodes.
+但是, 大多数时候你甚至都不需要再编写你自己的 shellcode 了
+因为这个库: :mod:`pwnlib.shellcraft` 已经为我们预先保存了大量有用的 shellcode
 
-Let's say that we want to `setreuid(getuid(), getuid())` followed by `dup`ing
-file descriptor 4 to `stdin`, `stdout`, and `stderr`, and then pop a shell!
+让我们来尝试一下, 我们的需求是构造如下的函数调用:
+
+`setreuid(getuid(), getuid())` 
+
+然后通过 `dup` 函数将文件描述符 4 绑定(复制)到 `stdin`, `stdout` 和 `stderr` 上, 然后弹出一个 shell
 
     >>> asm(shellcraft.setreuid() + shellcraft.dupsh(4)).encode('hex') # doctest: +ELLIPSIS
     '6a3158cd80...'
@@ -180,10 +182,8 @@ file descriptor 4 to `stdin`, `stdout`, and `stderr`, and then pop a shell!
 其他工具
 ----------------------
 
-Never write another hexdump, thanks to :mod:`pwnlib.util.fiddling`.
-
-
-Find offsets in your buffer that cause a crash, thanks to :mod:`pwnlib.cyclic`.
+没必要再自己实现一个 hexdump 了, 这多亏了 :mod:`pwnlib.util.fiddling` 这个库
+通过 :mod:`pwnlib.cyclic` 这个库可以直接找出造成程序崩溃的缓冲区数据偏移量了
 
     >>> print cyclic(20)
     aaaabaaacaaadaaaeaaa
@@ -196,6 +196,8 @@ ELF 文件解析以及操作
 
 Stop hard-coding things!  Look them up at runtime with :mod:`pwnlib.elf`.
 
+别再使用硬编码了! 直接使用 :mod:`pwnlib.elf` 来解析 ELF 文件
+
     >>> e = ELF('/bin/cat')
     >>> print hex(e.address) #doctest: +SKIP
     0x400000
@@ -206,7 +208,7 @@ Stop hard-coding things!  Look them up at runtime with :mod:`pwnlib.elf`.
     >>> print hex(e.plt['write']) #doctest: +SKIP
     0x401680
 
-You can even patch and save the files.
+你甚至都可以直接对文件打补丁并保存
 
     >>> e = ELF('/bin/cat')
     >>> e.read(e.address, 4)
