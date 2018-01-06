@@ -114,21 +114,17 @@ class DynELF(object):
 
         解析 lib 地址:
 
-            If we have a pointer into a dynamically-linked executable, we can
-            leverage an internal linker structure called the `link map`_. This
-            is a linked list structure which contains information about each
-            loaded library, including its full path and base address.
+            如果我们有一个指向动态链接的可执行程序的指针, 我们就能得到一个叫做 ``link map``_ 的内部的链表结构
+            这个数据结构是一个链表, 并且它包含了所有被加载的 lib 的信息, 包括完整的路径以及内存地址
 
-            A pointer to the ``link map`` can be found in two ways.  Both are
-            referenced from entries in the DYNAMIC_ array.
+            指向 ``lib map`` 的指针可以通过两种方法找到
+            两者都是从 DYNAMIC_ 数组中的条目引用的
 
-            - In non-RELRO binaries, a pointer is placed in the `.got.plt`_ area
-              in the binary. This is marked by finding the DT_PLTGOT_ area in the
-              binary.
-            - In all binaries, a pointer can be found in the area described by
-              the DT_DEBUG_ area.  This exists even in stripped binaries.
+            - 在没有开启 RELRO 的二进制程序中, 在 `.got.plt`_ 这个段会存在一个位置放置这个指针
+              那么问题就变成了在二进制程序中寻找 _DT_PLTGOT_ 了
+            - 在所有的二进制文件中, 这个指针会保存在 _DT_DEBUG_ 的地方, 就算是被去除符号的二进制程序中也是这样
 
-            For maximum flexibility, both mechanisms are used exhaustively.
+            为了保持最大的灵活性, 这两种方式都会被彻底地使用
 
     .. _symtab:    https://refspecs.linuxbase.org/elf/gabi4+/ch4.symtab.html
     .. _strtab:    https://refspecs.linuxbase.org/elf/gabi4+/ch4.strtab.html
