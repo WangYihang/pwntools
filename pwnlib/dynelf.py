@@ -1,47 +1,48 @@
 """
-Resolve symbols in loaded, dynamically-linked ELF binaries.
-Given a function which can leak data at an arbitrary address,
-any symbol in any loaded library can be resolved.
+解析加载到内存中的动态链接的 ELF 二进制文件中的符号
+需要提供一个可以泄漏任意内存的函数
+之后任何被动态加载的库的任何符号都可以被解析
 
-Example
+例子
 ^^^^^^^^
 
 ::
 
-    # Assume a process or remote connection
+    # 假设现在有一个进程或者远程连接
     p = process('./pwnme')
 
-    # Declare a function that takes a single address, and
-    # leaks at least one byte at that address.
+    # 声明一个函数, 这个函数只接收一个参数, 作为要被泄漏的内存地址
+    # 并且至少泄漏这个地址的一个字节的数据
     def leak(address):
         data = p.read(address, 4)
         log.debug("%#x => %s" % (address, (data or '').encode('hex')))
         return data
 
-    # For the sake of this example, let's say that we
-    # have any of these pointers.  One is a pointer into
-    # the target binary, the other two are pointers into libc
+    # 为了便于说明这个例子
+    # 假设我们有任意多的指针
+    # 一个指针指向二进制程序的某一个符号的指针
+    # 另两个指针指向 libc
     main   = 0xfeedf4ce
     libc   = 0xdeadb000
     system = 0xdeadbeef
 
-    # With our leaker, and a pointer into our target binary,
-    # we can resolve the address of anything.
-    #
-    # We do not actually need to have a copy of the target
-    # binary for this to work.
+    # 使用我们的泄漏器, 和一个指向二进制程序的某一个符号的指针
+    # 我们就能泄漏这个内存地址的任意数据
+    # 事实上为了解析符号, 我们都不需要对目标二进制进行拷贝
     d = DynELF(leak, main)
     assert d.lookup(None,     'libc') == libc
     assert d.lookup('system', 'libc') == system
 
     # However, if we *do* have a copy of the target binary,
-    # we can speed up some of the steps.
+
+    # 然而, 如果我们拷贝了这个二进制程序
+    # 这一步的速度就会快一点
     d = DynELF(leak, main, elf=ELF('./pwnme'))
     assert d.lookup(None,     'libc') == libc
     assert d.lookup('system', 'libc') == system
 
-    # Alternately, we can resolve symbols inside another library,
-    # given a pointer into it.
+    # 我们也可以解析别的 lib 中的符号
+    # 然后返回这个符号的指针
     d = DynELF(leak, libc + 0x1234)
     assert d.lookup('system')      == system
 
@@ -70,7 +71,7 @@ sizeof = ctypes.sizeof
 def sysv_hash(symbol):
     """sysv_hash(str) -> int
 
-    Function used to generate SYSV-style hashes for strings.
+    该函数用来计算 SYSV 风格的字符串哈希
     """
     h = 0
     g = 0
@@ -85,6 +86,7 @@ def gnu_hash(s):
     """gnu_hash(str) -> int
 
     Function used to generated GNU-style hashes for strings.
+    该函数用来计算 GNU 风格的字符串哈希
     """
     h = 5381
     for c in s:
@@ -93,30 +95,24 @@ def gnu_hash(s):
 
 class DynELF(object):
     '''
-    DynELF knows how to resolve symbols in remote processes via an infoleak or
-    memleak vulnerability encapsulated by :class:`pwnlib.memleak.MemLeak`.
+    DynELF 知道如何在一个远程程序中通过信息泄漏或者内存泄漏来解析符号, 得益于 :class:`pwnlib.memleak.MemLeak`
+    实现细节:
 
-    Implementation Details:
+        解析函数:
 
-        Resolving Functions:
-
-            In all ELFs which export symbols for importing by other libraries,
-            (e.g. ``libc.so``) there are a series of tables which give exported
-            symbol names, exported symbol addresses, and the ``hash`` of those
-            exported symbols.  By applying a hash function to the name of the
-            desired symbol (e.g., ``'printf'``), it can be located in the hash
-            table.  Its location in the hash table provides an index into the
-            string name table (strtab_), and the symbol address (symtab_).
+            在所有那些导出自己的符号以便与被别的 lib 导入的二进制程序 (例如: ``libc.so`` )中,
+            有一系列用于保存符号名称的表, 并且会将这些符号进行哈希。
+            通过实现相同的哈希函数, 我们就可以知道符号名称 (例如: ``printf``) 哈希的结果
+            然后我们就可以从哈希表中找到他们, 它在哈希表中位置会提供一个字符串表的索引(strtab_)以及符号的地址(symtab_)
 
             Assuming we have the base address of ``libc.so``, the way to resolve
-            the address of ``printf`` is to locate the ``symtab``, ``strtab``,
-            and hash table. The string ``"printf"`` is hashed according to the
-            style of the hash table (SYSV_ or GNU_), and the hash table is
-            walked until a matching entry is located. We can verify an exact
-            match by checking the string table, and then get the offset into
-            ``libc.so`` from the ``symtab``.
+            假设我们已经得到了 ``libc.so`` 在虚拟内存中的基地址
+            为了进一步得到 ``printf``, 我们需要定位 ``symtab`` 和 ``strtab`` 以及哈希表
+            ``"printf"`` 这个字符串已经被根据不同的方式(SYSV_ 或者 GNU_)哈希过并且存储在哈希表中
+            然后只需要遍历哈希表直到我们找到匹配的入口
+            我们可以通过检查字符串表来验证这是绝对正确的, 检查字符串表, 然后就可以得到 ``symtab`` 在 ``libc.so`` 中的偏移
 
-        Resolving Library Addresses:
+        解析 lib 地址:
 
             If we have a pointer into a dynamically-linked executable, we can
             leverage an internal linker structure called the `link map`_. This
