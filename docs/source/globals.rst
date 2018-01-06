@@ -55,7 +55,7 @@
     - 只给出一个指向任何加载模块的指针, 以及一个可以在任何地址泄露数据的函数, DynELF 库就可以动态地解析任意函数地址
 - ``ROP``
     - :mod:`pwnlib.rop`
-    - 通过使用 DSL 来描述你想要调用的代码, 然后就可以自动生成 ROP 链, 而不需要二进制地址
+    - 通过使用 `DSL <https://en.wikipedia.org/wiki/Domain-specific_language>`_ 来描述你想要调用的代码, 然后就可以自动生成 ROP 链, 而不需要二进制地址
 - ``gdb.debug`` and ``gdb.attach``
     - :mod:`pwnlib.gdb`
     - Launch a binary under GDB and pop up a new terminal to interact with it.  Automates setting breakpoints and makes iteration on exploits MUCH faster.
