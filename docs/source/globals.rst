@@ -5,13 +5,13 @@
 ``from pwn import *``
 ========================
 
-The most common way that you'll see pwntools used is
+你将会看到这是 pwntools 的最常见的用法
 
     >>> from pwn import *
 
-Which imports a bazillion things into the global namespace to make your life easier.
+这行代码引入了从全局命名空间中引入了大量实用代码来让你的漏洞利用过程更加简单
 
-This is a quick list of most of the objects and routines imported, in rough order of importance and frequency of use.
+下面我们来快速浏览一下那些被导入的模块的清单, 大致是以重要性和使用频率来排序
 
 - :mod:`pwnlib.context`
     - :data:`pwnlib.context.context`
@@ -80,7 +80,7 @@ This is a quick list of most of the objects and routines imported, in rough orde
     - :mod:`pwnlib.util.safeeval`
     - Functions for safely evaluating python code without nasty side-effects.
 
-These are all pretty self explanatory, but are useful to have in the global namespace.
+再看一下面的这些库, 显而易见, 它们也被导入全局命名空间, 并且可以直接使用
 
 - ``hexdump``
 - ``read`` and ``write``
@@ -92,7 +92,7 @@ These are all pretty self explanatory, but are useful to have in the global name
 - ``which``
 - ``wget``
 
-Additionally, all of the following modules are auto-imported for you.  You were going to do it anyway.
+除此之外, 下面展示的所有模块已经被自动导入, 因为通常情况下你会频繁会使用到这些库的
 
 - ``os``
 - ``sys``
