@@ -1,4 +1,6 @@
 #!/usr/bin/env python2
+# encoding: utf-8
+
 from __future__ import absolute_import
 
 import argparse
@@ -9,26 +11,26 @@ from pwnlib.commandline import common
 
 parser = common.parser_commands.add_parser(
     'asm',
-    help = 'Assemble shellcode into bytes'
+    help = '将 shellcode 汇编成机器码'
 )
 
 parser.add_argument(
     'lines',
     metavar='line',
     nargs='*',
-    help='Lines to assemble. If none are supplied, use stdin'
+    help='需要被汇编的代码, 如果没有提供这个参数, 就会从标准输入流中读取'
 )
 
 parser.add_argument(
     "-f", "--format",
-    help="Output format (defaults to hex for ttys, otherwise raw)",
+    help="格式化输出 (默认输出到终端的为十六进制, 其他的是原始二进制)",
     choices=['raw', 'hex', 'string', 'elf']
 )
 
 parser.add_argument(
     "-o","--output",
     metavar='file',
-    help="Output file (defaults to stdout)",
+    help="指定输出文件 (默认标准输出流)",
     type=argparse.FileType('w'),
     default=sys.stdout
 )
@@ -39,13 +41,13 @@ parser.add_argument(
     action = 'append',
     type   = common.context_arg,
     choices = common.choices,
-    help = 'The os/architecture/endianness/bits the shellcode will run in (default: linux/i386), choose from: %s' % common.choices,
+    help = '指定 shellcode 将要被运行的系统环境: 操作系统/架构/字节序/字长 (默认: linux/i386), 可以在其中进行选择: %s' % common.choices,
 )
 
 parser.add_argument(
     '-v', '--avoid',
     action='append',
-    help = 'Encode the shellcode to avoid the listed bytes (provided as hex; default: 000a)'
+    help = '编码 shellcode 使它避免指定的字符 (以 16 进制提供; 默认: 000a)'
 )
 
 parser.add_argument(
@@ -53,7 +55,7 @@ parser.add_argument(
     dest='avoid',
     action='append_const',
     const='\n',
-    help = 'Encode the shellcode to avoid newlines'
+    help = '编码 shellcode 使它避免换行符'
 )
 
 parser.add_argument(
@@ -61,27 +63,27 @@ parser.add_argument(
     dest='avoid',
     action='append_const',
     const='\x00',
-    help = 'Encode the shellcode to avoid NULL bytes'
+    help = '编码 shellcode 使它避免空字节'
 )
 
 
 parser.add_argument(
     '-d',
     '--debug',
-    help='Debug the shellcode with GDB',
+    help='使用 GDB 调试 shellcode',
     action='store_true'
 )
 
 parser.add_argument(
     '-e',
     '--encoder',
-    help="Specific encoder to use"
+    help="指定编码器"
 )
 
 parser.add_argument(
     '-i',
     '--infile',
-    help="Specify input file",
+    help="指定输入文件",
     default=sys.stdin,
     type=file
 )
@@ -89,7 +91,7 @@ parser.add_argument(
 parser.add_argument(
     '-r',
     '--run',
-    help="Run output",
+    help="运行输出",
     action='store_true'
 )
 
