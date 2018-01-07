@@ -10,7 +10,7 @@
 Command Line Tools
 ========================
 
-pwntools comes with a handful of useful command-line utilities which serve as wrappers for some of the internal functionality.
+pwntools 也提供了大量有用的命令行工具, 它们用作某些内部功能的包装
 
 .. toctree::
 
