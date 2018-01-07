@@ -1,28 +1,26 @@
-"""Provides utilities for interacting with Android devices via the Android Debug Bridge.
+""" 通过安卓调试桥 (ADB) 提供与安卓设备交互的功能
 
-Using Android Devices with Pwntools
+通过 pwntools 使用安卓设备
 -----------------------------------
 
-Pwntools tries to be as easy as possible to use with Android devices.
+Pwntools 在尝试将与安卓设备交互变得尽可能简单
 
-If you have only one device attached, everything "just works".
+如果你只有一个连接的安卓设备, 那么就可以直接使用了
 
-If you have multiple devices, you have a handful of options to select one, or iterate
-over the devices.
+如果你有多个安卓设备, 那么你可能需要手动选择一个, 或者遍历他们
 
-First and most important is the ``context.device`` property, which declares the "currently"
-selected device in any scope.  It can be set manually to a serial number, or to a ``Device``
-instance.
+首先也是最重要的是 ``context.device`` 属性，它声明了 "当前" 所选设备
+它可以手动设置为序列号或 ``Device`` 类的实例
 
 .. code-block:: python
 
-    # Take the first available device
+    # 获取第一个有效的安卓设备
     context.device = adb.wait_for_device()
 
-    # Set a device by serial number
+    # 通过序列号设置安卓设备
     context.device = 'ZX1G22LH8S'
 
-    # Set a device by its product name
+    # 通过产品名称设置安卓设备
     for device in adb.devices():
         if device.product == 'shamu':
             break
@@ -30,17 +28,17 @@ instance.
         error("Could not find any shamus!")
 
 Once a device is selected, you can operate on it with any of the functions in
-the :mod:`pwnlib.adb` module.
+一旦设备被选择成功, 那么你就可以调用 :mod:`pwnlib.adb` 任意函数其进行操作了
 
 .. code-block:: python
 
-    # Get a process listing
+    # 获取进程列表
     print adb.process(['ps']).recvall()
 
-    # Fetch properties
+    # 获取属性
     print adb.properties.ro.build.fingerprint
 
-    # Read and write files
+    # 读写文件
     print adb.read('/proc/version')
     adb.write('/data/local/tmp/foo', 'my data')
 
