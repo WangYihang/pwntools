@@ -1,19 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-During exploit development, it is frequently useful to debug the
-target binary under GDB.
+在漏洞利用的编写中, 会非常频繁使用到 GDB 来调试目标二进制程序
+Pwntools通过一些帮助例程来实现这一点
+这些例程旨在使您的 Exploit 调试/迭代周期更快。
 
-Pwntools makes this easy-to-do with a handful of helper routines, designed
-to make your exploit-debug-update cycles much faster.
-
-Useful Functions
+有用的函数
 ----------------
 
-- :func:`attach` - Attach to an existing process
-- :func:`debug` - Start a new process under a debugger, stopped at the first instruction
-- :func:`debug_shellcode` - Build a binary with the provided shellcode, and start it under a debugger
+- :func:`attach` - 附加到一个已存在的进程
+- :func:`debug` - 在调试器下启动一个新进程, 并且停在第一条指令
+- :func:`debug_shellcode` - 通过提供的 shellcode 来构建一个二进制程序, 并且在调试器中启动它
 
-Debugging Tips
+调试小技巧
 --------------
 
 The :func:`attach` and :func:`debug` functions will likely be your bread and
@@ -22,7 +20,7 @@ butter for debugging.
 Both allow you to provide a script to pass to GDB when it is started, so that
 it can automatically set your breakpoints.
 
-Attaching to Processes
+附加至进程
 ~~~~~~~~~~~~~~~~~~~~~~
 
 To attach to an existing process, just use :func:`attach`.  It is surprisingly
@@ -30,7 +28,7 @@ versatile, and can attach to a :class:`.process` for simple
 binaries, or will automatically find the correct process to attach to for a
 forking server, if given a :class:`.remote` object.
 
-Spawning New Processes
+产生新进程
 ~~~~~~~~~~~~~~~~~~~~~~
 
 Attaching to processes with :func:`attach` is useful, but the state the process
