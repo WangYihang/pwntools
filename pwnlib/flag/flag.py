@@ -1,4 +1,5 @@
-"""Describes a way to submit a key to a key server.
+"""
+实现了将 flag 提交到 flag 服务器的函数
 """
 from __future__ import absolute_import
 
@@ -26,22 +27,20 @@ def submit_flag(flag,
                 proto=env_proto,
                 team=env_team_name):
     """
-    Submits a flag to the game server
+    向比赛服务器提交 flag
 
     Arguments:
-        flag(str): The flag to submit.
-        exploit(str): Exploit identifier, optional
-        target(str): Target identifier, optional
-        server(str): Flag server host name, optional
-        port(int): Flag server port, optional
-        proto(str), Flag server protocol, optional
+        flag(str): 需要被提交的 flag.
+        exploit(str): Exploit ID, 可选
+        target(str): 目标ID, 可选
+        server(str): Flag 服务器的地址(主机名), 可选
+        port(int): Flag 服务器的端口, 可选
+        proto(str), Flag 服务器的协议, 可选
 
-    Optional arguments are inferred from the environment,
-    or omitted if none is set.
+    可选参数会从环境变量中获得, 或者会被排除在外
 
     Returns:
-        A string indicating the status of the key submission,
-        or an error code.
+        一个字符串表示提交的结果或者返回一个错误代码
 
     Doctest:
 
