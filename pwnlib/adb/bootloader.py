@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# encoding:utf-8
+
 from __future__ import unicode_literals
 
 import ctypes
@@ -27,10 +30,10 @@ class bootloader_images_header(ctypes.Structure):
 
 class BootloaderImage(object):
     def __init__(self, data):
-        """Android Bootloader image
+        """安卓 BootLoader 镜像
 
         Arguments:
-            data(str): Binary data from the image file.
+            data(str): 从镜像文件中提取出的二进制数据.
         """
         self.data = data
         self.header = bootloader_images_header.from_buffer_copy(data)
@@ -41,13 +44,13 @@ class BootloaderImage(object):
     def extract(self, index_or_name):
         """extract(index_or_name) -> bytes
 
-        Extract the contents of an image.
+        解压一个镜像的内容
 
         Arguments:
-            index_or_name(str,int): Either an image index or name.
+            index_or_name(str,int): 镜像的索引或者名称.
 
         Returns:
-            Contents of the image.
+            镜像的内容.
         """
         if isinstance(index_or_name, int):
             index = index_or_name
@@ -72,8 +75,8 @@ class BootloaderImage(object):
     def extract_all(self, path):
         """extract_all(path)
 
-        Extracts all images to the provided path.  The filenames are taken
-        from the image name, with '.img' appended.
+        将所有的镜像解压到提供的目录
+        文件名以 '.img' 结尾, 并且取不包含后缀名的那部分
         """
         if not os.path.isdir(path):
             raise ValueError("%r does not exist or is not a directory" % path)
