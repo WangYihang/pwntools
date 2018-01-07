@@ -62,7 +62,7 @@
     - 通过指定 PID 附加到一个正在运行的进程上, 或者 :mod:`pwnlib.tubes` 对象上, 甚至仅仅是一个已连接的套接字上
 - ``args``
     - 快速访问命令行参数, 其中参数的键全部大写, 并且为字典类型
-    - 可以通过 ``python foo.py REMOTE=1`` 或者 ``args['REMOTE'] == '1'` 来设置命令行参数
+    - 可以通过 ``python foo.py REMOTE=1`` 或者 ``args['REMOTE'] == '1'`` 来设置命令行参数
     - 你也可以在这里设置日志等级或者终端偏好
         - `NOTERM`
         - `SILENT`

@@ -1,9 +1,10 @@
+#!/usr/bin/env python
+# encoding:utf-8
+
 """
-Implementation of the Android Debug Bridge (ADB) protocol.
+ADB (Android Debug Bridge) 协议的实现
 
-Documentation is available here_.
-
-.. _here: https://android.googlesource.com/platform/system/core/+/master/adb/protocol.txt
+`Andorid Debug Bridge 协议官方文档 <https://android.googlesource.com/platform/system/core/+/master/adb/protocol.txt>`
 """
 from __future__ import absolute_import
 

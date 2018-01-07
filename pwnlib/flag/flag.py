@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# encoding:utf-8
+
 """
 实现了将 flag 提交到 flag 服务器的函数
 """

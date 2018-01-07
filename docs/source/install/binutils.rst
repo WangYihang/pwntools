@@ -35,7 +35,7 @@ Mac OS X 安装比较容易, 但是也需要从源码编译 binutils
 但是, 我们已经做好了 ``homebrew`` 的软件包以便于可以通过一条命令完成构建
 After installing `brew <http://brew.sh>`__, grab the appropriate
 在安装完成 `brew <http://brew.sh>`__ 之后, 就可以开始正式安装 binutils 了
- `binutils
+`binutils
 repo <https://github.com/Gallopsled/pwntools-binutils/>`__.
 
 .. code-block:: bash
