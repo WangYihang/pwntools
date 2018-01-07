@@ -30,7 +30,6 @@ Pwntools 在尝试将与安卓设备交互变得尽可能简单
     else:
         error("Could not find any shamus!")
 
-Once a device is selected, you can operate on it with any of the functions in
 一旦设备被选择成功, 那么你就可以调用 :mod:`pwnlib.adb` 任意函数其进行操作了
 
 .. code-block:: python
