@@ -7,7 +7,7 @@
 
     context.defaults.copy = old
 
-Command Line Tools
+命令行工具
 ========================
 
 pwntools 也提供了大量有用的命令行工具, 它们用作某些内部功能的包装

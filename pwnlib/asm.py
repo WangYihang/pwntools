@@ -1,39 +1,38 @@
+#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 r"""
-Utilities for assembling and disassembling code.
+汇编以及反汇编工具
 
-Architecture Selection
+选择架构
 ------------------------
 
-    Architecture, endianness, and word size are selected by using :mod:`pwnlib.context`.
+    架构, 字节序, 字长等可以通过 :mod:`pwnlib.context` 进行设置
 
-    Any parameters which can be specified to ``context`` can also be specified as
-    keyword arguments to either :func:`asm` or :func:`disasm`.
+    任何可以用 ``context`` 来设置的属性同样也可以作为 :func:`asm` 和 :func:`disasm` 的参数提供
 
-Assembly
+汇编
 ------------------------
 
-    To assemble code, simply invoke :func:`asm` on the code to assemble.
+    :func:`asm` 可以用来汇编
 
         >>> asm('mov eax, 0')
         '\xb8\x00\x00\x00\x00'
 
-    Additionally, you can use constants as defined in the :mod:`pwnlib.constants`
-    module.
+    除此之外ia, 你可以使用在 :mod:`pwnlib.constants` 模块中定义的常量
 
         >>> asm('mov eax, SYS_execve')
         '\xb8\x0b\x00\x00\x00'
 
-    Finally, :func:`asm` is used to assemble shellcode provided by ``pwntools``
-    in the :mod:`shellcraft` module.
+    最后, ``pwntools`` 提供的 :mod:`shellcraft` 库中的 shellcode 是被 :func:`asm` 函数进行汇编的
 
         >>> asm(shellcraft.nop())
         '\x90'
 
-Disassembly
+反汇编
 ------------------------
 
-    To disassemble code, simply invoke :func:`disasm` on the bytes to disassemble.
+    通过为 :func:`disasm` 提供字节参数来反汇编
 
     >>> disasm('\xb8\x0b\x00\x00\x00')
     '   0:   b8 0b 00 00 00          mov    eax,0xb'
