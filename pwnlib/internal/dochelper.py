@@ -12,7 +12,9 @@ except ImportError:
 
 
 class ExecDirective(Directive):
-    """Execute the specified python code and insert the output into the document"""
+    """
+    执行指定的Python代码并将输出插入到文档中
+    """
     has_content = True
 
     def run(self):
