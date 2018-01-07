@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# encoding=utf-8
+
 """ 通过安卓调试桥 (ADB) 提供与安卓设备交互的功能
 
 通过 pwntools 使用安卓设备
